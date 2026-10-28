@@ -75,8 +75,13 @@ char* removeRoomName(char *string){
 
 
 
-int main(){
-    FILE *fp = fopen("dungeonRoomList_large.txt", "r");
+int main(int argc, char *argv[]){
+    if (argc < 2) {
+        printf("Error: Missing file argument.\n");
+        return 1;
+    }
+    char *filename = argv[1];
+    FILE *fp = fopen(filename, "r");
     if (fp == NULL) {
         printf("Error: Could not open file. Check if the file exists in this directory.\n");
         return 1;
@@ -127,7 +132,7 @@ int main(){
             strncpy(dungeon[i].desc, fileBuffer, sizeof(dungeon[i].desc) - 1);
             dungeon[i].desc[sizeof(dungeon[i].desc) - 1] = '\0';
         } else break;
-       // reads the line seperating the rooms
+       // reads the line separating the rooms
         fgets(fileBuffer, sizeof(fileBuffer), fp);
     }
 
