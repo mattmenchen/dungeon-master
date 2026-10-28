@@ -17,5 +17,23 @@ void printRoom(Room *theRoom){
 
 
 int main(){
+    FILE *fp = fopen("dungeonRoomList_large.txt", "r");
+    char fileBuffer[512];
+    int lines = 0;
+    char ch;
+    while ((ch = fgetc(fp)) != EOF) {
+        if (ch == '\n') {
+            lines ++;
+        }
+    }
+
+    int numOfRooms = lines / 4;
+
+
+
+
+
+
+    fclose(fp);
     return 0;
 }
